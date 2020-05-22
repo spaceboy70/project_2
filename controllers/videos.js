@@ -69,8 +69,18 @@ videosController.get('/', (req, res)=>{
 
 
 
-//  Show
-
+// SHOW
+videosController.get('/:id', (req, res)=>{
+    Video.findById(req.params.id, (error, foundVideo)=>{
+        if (error){
+            show(error)
+        } else {
+            res.render('Show', {
+                video: foundVideo
+            })
+        }
+    })
+})
 
 
 
