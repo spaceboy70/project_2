@@ -61,11 +61,23 @@ videosController.get('/', (req, res)=>{
 });
 
 //  New
-
+videosController.get('/new', (req, res)=>{
+    res.render('New');
+});
 
 
 //  Edit
-
+videosController.get('/:id/edit', (req, res)=>{
+    Video.findById(req.params.id, (error, foundVideo)=>{
+        if(error){
+            show(error);
+        } else {
+            res.render('Edit', {
+                video: foundVideo
+            })
+        }
+    })
+})
 
 
 
@@ -86,18 +98,46 @@ videosController.get('/:id', (req, res)=>{
 
 
 //  Delete
-
+videosController.delete('/:id', (req, res)=>{
+    Video.findByIdAndRemove(req.params.id, (error, log)=>{
+        res.redirect('/videos');
+    })
+})
 
 
 
 //  Update
-
+videosController.put('/:id', (req, res)=>{
+    req.body.dvd === "on" ? req.body.dvd = true: req.body.dvd = false;
+    req.body.googlePlay === "on" ? req.body.googlePlay = true: req.body.googlePlay = false;
+    req.body.amazonPrime === "on" ? req.body.amazonPrime = true: req.body.amazonPrime = false;
+    req.body.starring = req.body.starring.split(',');
+    Video.findByIdAndUpdate(req.params.id, req.body, (error, foundVideo)=>{
+        if(error){
+            show(error);
+        } else {
+            res.redirect('/videos');
+        }
+    });
+});
 
 
 
 
 //  Create
-
+videosController.post('/', (req, res)=>{
+    req.body.dvd === "on" ? req.body.dvd = true: req.body.dvd = false;
+    req.body.googlePlay === "on" ? req.body.googlePlay = true: req.body.googlePlay = false;
+    req.body.amazonPrime === "on" ? req.body.amazonPrime = true: req.body.amazonPrime = false;
+    req.body.starring = req.body.starring.split(',');
+    Video.create(req.body, (error, createdVideo)=>{
+        if(error) {
+            show(error);
+        } else{
+            res.redirect('/videos');
+        }
+    });
+});
 
 
 

@@ -16,8 +16,8 @@ class Show extends React.Component {
                         <h4>Starring: {video.starring.map((star)=>{return `${star}  `})} </h4>
                         <img src={video.img}/>
                         <p>{ video.description }</p>
-                        <h5>Format: { video.dvd ? 'DVD' : ''}
-                                    {video.googlePlay ? 'GooglePlay' : ''}
+                        <h5>Format: { video.dvd ? 'DVD   ' : ''}
+                                    {video.googlePlay ? 'GooglePlay   ' : ''}
                                     {video.amazonPrime ? 'Amazon Prime' : ''}
                         </h5>
                         <a href={`/videos/${video._id}/edit`}>Edit This Item</a> 
