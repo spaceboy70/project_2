@@ -20,14 +20,11 @@ class Index extends React.Component {
                         <li key={i}>
                             <card>
                                     <h3><a href={`/videos/${video._id}`}>{ video.title }</a></h3>
-                                <h4>Starring: {video.starring.map((star)=>{return `${star}  `})} </h4>
                                 <img src={video.img}/>
-                                <p>{ video.description }</p>
                                 <h5>Format: { video.dvd ? 'DVD' : ''}
                                             {video.googlePlay ? 'GooglePlay' : ''}
                                             {video.amazonPrime ? 'Amazon Prime' : ''}
                                 </h5>
-                                <a href={`/videos/${video._id}/edit`}>Edit This Item</a> 
                                 <form action={`/videos/${video._id}?_method=DELETE`} method="post">
                                     <input type="submit" value="delete"/>
                                 </form>

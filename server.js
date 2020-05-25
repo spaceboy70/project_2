@@ -9,6 +9,8 @@
  const PORT = process.env.PORT || 3000;
  const session = ('express-session');
  const videosController = require('./controllers/videos.js');
+ const usersController = require('./controllers/users_controller.js');
+ const sesssionsController = require('./controllers/sessions_controller.js');
 
  const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/project2';
  mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true });
@@ -28,9 +30,15 @@
  app.use(express.urlencoded({ extended: false }));
  app.use(express.json());
  app.use(methodOverride('_method'));
+ app.use(session({
+   secret: process.env.SECRET,
+   resave: false,
+   saveUninitialized: false
+ }))
  app.set ('view engine', 'jsx');
  app.engine('jsx', require('express-react-views').createEngine());
  
+
  //___________________
  // Controllers
  //___________________
@@ -39,7 +47,8 @@
  });
  
 app.use('/videos', videosController);
-
+app.use('/sessions', sesssionsController);
+app.use('/users', usersController);
 
 
  //___________________
