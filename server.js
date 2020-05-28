@@ -7,7 +7,7 @@
  const app = express ();
  const db = mongoose.connection;
  const PORT = process.env.PORT || 3000;
- const session = ('express-session');
+ const session = require('express-session');
  const videosController = require('./controllers/videos.js');
  const usersController = require('./controllers/users_controller.js');
  const sesssionsController = require('./controllers/sessions_controller.js');

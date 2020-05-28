@@ -2,13 +2,13 @@ const express = require('express');
 const Video = require('../models/videos.js');
 const videosController = express.Router();
 const show = console.log;
-// const isAuthenticated = (req, res, next)=>{
-//     if (req.session.currentUser){
-//         return next()
-//     } else {
-//         res.redirect('sessions/new')
-//     }
-// }
+const isAuthenticated = (req, res, next)=>{
+    if (req.session.currentUser){
+        return next()
+    } else {
+        res.redirect('sessions/new')
+    }
+}
 
 
 // Routes
@@ -50,19 +50,19 @@ videosController.get('/seed', (req, res)=>{
 });
 
 // Index
-videosController.get('/', (req, res)=>{
+videosController.get('/', isAuthenticated, (req, res)=>{
     Video.find({}, (error, allVideos)=>{
         if (error){
             show(error);
         } else {
-            res.render('Index', {videos: allVideos});
+            res.render('Index', {videos: allVideos, currentUser: req.session.currentUser});
         };
     });
 });
 
 //  New
 videosController.get('/new', (req, res)=>{
-    res.render('New');
+    res.render('New', {currentUser: req.session.currentUser});
 });
 
 
@@ -73,7 +73,8 @@ videosController.get('/:id/edit', (req, res)=>{
             show(error);
         } else {
             res.render('Edit', {
-                video: foundVideo
+                video: foundVideo,
+                currentUser: req.session.currentUser
             })
         }
     })
@@ -88,7 +89,8 @@ videosController.get('/:id', (req, res)=>{
             show(error)
         } else {
             res.render('Show', {
-                video: foundVideo
+                video: foundVideo,
+                currentUser: req.session.currentUser
             })
         }
     })

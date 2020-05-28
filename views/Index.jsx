@@ -6,7 +6,7 @@ class Index extends React.Component {
     return (
         <div>
             <h1>Video Collection</h1>
-            {/* <h2>Welcome {this.props.currentUser.username}</h2> */}
+            <h2>Welcome {this.props.currentUser.username}</h2>
              <nav>
                  <a href="/videos/new">Create a New Video Entry</a>
              </nav>

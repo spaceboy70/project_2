@@ -5,7 +5,7 @@ class New extends React.Component {
     return (
         <div>
             <h1>New Video </h1>
-            {/* <h2>Welcome {this.props.currentUser.username}</h2> */}
+            <h2>Welcome {this.props.currentUser.username}</h2>
             <form action="/videos" method="POST">
                 Title: <input type="text" name="title" /><br/>
                 Starring: <input type="text" name="starring" placeholder="seperate by commas e.g. Keanu Reeves, Lawrence Fishburne"/><br/>

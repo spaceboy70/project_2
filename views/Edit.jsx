@@ -7,7 +7,7 @@ class Edit extends React.Component {
     return (
         <div>
             <h1>Edit Video </h1>
-            {/* <h2>Welcome {this.props.currentUser.username}</h2> */}
+            <h2>Welcome {this.props.currentUser.username}</h2>
             <form action={`/videos/${video._id}?_method=PUT`} method="POST">
                 Title: <input type="text" name="title" value={video.title} /><br/>
                 Starring: <input type="text" name="starring" value={video.starring} /><br/>

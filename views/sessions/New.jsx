@@ -1,20 +1,20 @@
 const React = require('react');
  
-class NewUser extends React.Component {
+class LoginUser extends React.Component {
     render() {
         return (
             <div>
-                <h1>New User</h1>
-                <form action="/users/" method="POST">
+                <h1>Login</h1>
+                <form action="/sessions/" method="POST">
                     username: <input type="text" name="username" />
                     <br />
                     password: <input type="password" name="password" />
                     <br />
-                    <input type="submit" name="" value="Create User" />
+                    <input type="submit" name="" value="Login" />
                 </form>
             </div>
         );
     }
 }
 
-module.exports = NewUser;
+module.exports = LoginUser;

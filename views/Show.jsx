@@ -6,7 +6,7 @@ class Show extends React.Component {
     return (
         <div>
             <h1>{ video.title }</h1>
-            {/* <h2>Welcome {this.props.currentUser.username}</h2> */}
+            <h2>Welcome {this.props.currentUser.username}</h2>
 
             <form action="/sessions?_method=DELETE" method="POST">
                 <input type="submit" value="Log Out"/>
