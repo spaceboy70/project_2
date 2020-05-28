@@ -11,6 +11,7 @@
  const videosController = require('./controllers/videos.js');
  const usersController = require('./controllers/users_controller.js');
  const sesssionsController = require('./controllers/sessions_controller.js');
+ const SECRET = process.env.SECRET || 'helloWorld';
 
  const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/project2';
  mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useFindAndModify: true, useUnifiedTopology: true });
@@ -31,7 +32,7 @@
  app.use(express.json());
  app.use(methodOverride('_method'));
  app.use(session({
-   secret: process.env.SECRET,
+   secret: SECRET,
    resave: false,
    saveUninitialized: false
  }))
