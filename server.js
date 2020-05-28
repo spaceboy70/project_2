@@ -44,7 +44,7 @@
  // Controllers
  //___________________
  app.get('/' , (req, res) => {
-   res.send('Hello World!');
+   res.send('<a href="/videos">Enter Videos Collection</a>');
  });
  
 app.use('/videos', videosController);
