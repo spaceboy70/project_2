@@ -43,14 +43,15 @@
  //___________________
  // Controllers
  //___________________
- app.get('/' , (req, res) => {
-   res.send('<a href="/videos">Enter Videos Collection</a>');
- });
+
  
 app.use('/videos', videosController);
 app.use('/sessions', sesssionsController);
 app.use('/users', usersController);
 
+app.get('/' , (req, res) => {
+  res.render('Home');
+});
 
  //___________________
  //Listener
