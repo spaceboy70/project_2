@@ -50,7 +50,7 @@ app.use('/sessions', sesssionsController);
 app.use('/users', usersController);
 
 app.get('/' , (req, res) => {
-  res.render('Home');
+  res.redirect('/videos');
 });
 
  //___________________
